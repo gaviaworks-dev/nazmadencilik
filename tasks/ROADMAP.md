@@ -17,7 +17,8 @@ Sıra kullanıcı onayıyla ilerler. Her adım bitince işaretlenir.
       almadan UYGULANMAZ (erken ölçüm boşa gider)
 - [ ] **5. Faz 2** — EN sayfası + EN yasal sayfalar
 - [ ] **6. Faz 3** — a11y, SEO/OG, Lighthouse
-- [ ] **7. Faz 4** — repo + GitHub Pages deploy
+- [x] **7. Faz 4 (önizleme)** — public repo + GitHub Pages deploy yapıldı (2026-07-28,
+      noindex+robots ile). Yayına açılış: yasal onay + form servisi sonrası.
 
 ---
 
