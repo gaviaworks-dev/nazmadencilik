@@ -50,10 +50,13 @@ markup'ı yazılır ama `action` form servisine bağlanana dek form sayfada yay�
 ## Dizin yapısı
 ```
 index.html            # TR (varsayılan dil, one-page)
-en.html               # EN (Faz 2)
+en.html               # EN one-page (DOM index.html ile birebir)
 kvkk.html             # KVKK Aydınlatma Metni (yasal; hukukçu onayı bekliyor)
 gizlilik-politikasi.html
 cerez-politikasi.html
+kvkk-notice.html      # EN yasal karşılıklar (aynı hukukçu-onayı blokerine tabi)
+privacy-policy.html
+cookie-policy.html
 favicon.ico
 assets/
   css/tokens.css      # TEK tasarım otoritesi: @font-face + renk/tip/spacing/radius/shadow/motion token'ları
@@ -113,8 +116,11 @@ README.md             # (Faz 4)
       uydurulamaz — patrondan kuruluş yılı/deneyim rakamı gelince tek satırda değişir.
 - [ ] **Vektör logo:** kaynak 160×100 PNG retinada yumuşak; SVG patrondan beklemede.
       Geldiğinde sayfalarda yalnız `src` değişecek (kutu oran-bağımsız).
-- [ ] **EN sayfası (Faz 2):** `en.html` + hreflang çifti; topbar'daki EN linki o zamana
-      dek 404 verir (deploy zaten Faz 2 sonrası). Yasal sayfaların EN karşılıkları da Faz 2.
+- [x] **EN sayfası (Faz 2):** Bitti (2026-07-28) — `en.html` + EN yasal sayfalar
+      (`kvkk-notice.html`, `privacy-policy.html`, `cookie-policy.html`); hreflang
+      alternate çiftleri 8 sayfada (göreli URL; Faz 3'te mutlak URL'ye çevrilecek);
+      çerez bandı `html[lang]`'e göre TR/EN. Dil seçici her sayfada kendi
+      karşılığına gider.
 - [ ] **Faz 3:** SEO/OG meta seti, og-image, Lighthouse turu, a11y turu; yasal sayfalardaki
       `noindex` yayın öncesi gözden geçirilecek.
 - [ ] **Faz 4:** GitHub repo + Pages aktivasyonu + README.

@@ -11,11 +11,17 @@ Sıra kullanıcı onayıyla ilerler. Her adım bitince işaretlenir.
       (data-theme + IO); TÜM ana bölümler tam 100svh, arka plan viewport
       tepesinden. (Bitti, 2026-07-28 — 4. adımın "eşit yükseklik" yarısı da
       bununla geldi; sıkıştırma/snap ölçüm turu 4. adımda.)
-- [ ] **2. Ürün Portföyü** — Gavia "04 / Vaka çalışmaları" kart yapısına dönüşüm
-- [ ] **3. Kurumsal** — Gavia bölüm ritmine oturtma
-- [ ] **4. Eşit yükseklik + snap turu** — tanımı aşağıda; TÜM bölümler son halini
-      almadan UYGULANMAZ (erken ölçüm boşa gider)
-- [ ] **5. Faz 2** — EN sayfası + EN yasal sayfalar
+- [x] **2. Ürün Portföyü** — Gavia "04 / Vaka çalışmaları" kart yapısına dönüşüm
+      (Bitti — handoff 2026-07-28: "Gavia hizmet kartları"; işaret sonradan kondu.)
+- [x] **3. Kurumsal** — Gavia bölüm ritmine oturtma (Bitti — handoff 2026-07-28:
+      galeri + lightbox + rozet; işaret sonradan kondu.)
+- [x] **4. Eşit yükseklik + snap turu** — tanımı aşağıda (Bitti — handoff 2026-07-28:
+      5 bölüm tam 100svh eşit, `y mandatory` snap iki yönde Playwright ile doğrulandı;
+      işaret sonradan kondu.)
+- [x] **5. Faz 2** — EN sayfası + EN yasal sayfalar (Bitti, 2026-07-28: `en.html` +
+      `kvkk-notice.html` + `privacy-policy.html` + `cookie-policy.html`; hreflang
+      çiftleri tüm sayfalarda; çerez bandı `html[lang]`'e göre iki dilli; DOM
+      birebirliği ve linkler script'le, etkileşimler headless Chrome ile doğrulandı.)
 - [ ] **6. Faz 3** — a11y, SEO/OG, Lighthouse
 - [x] **7. Faz 4 (önizleme)** — public repo + GitHub Pages deploy yapıldı (2026-07-28,
       noindex+robots ile). Yayına açılış: yasal onay + form servisi sonrası.

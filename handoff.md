@@ -26,8 +26,11 @@ Statik one-page kurumsal site **canlıda (önizleme)**. Build step yok; saf HTML
 
 ## Kalan işler (öncelik sırasıyla)
 
-1. **en.html** — SIRADAKİ OTURUMUN İLK ADIMI (aşağıya bak)
-2. EN yasal sayfalar (kvkk/gizlilik/çerez EN karşılıkları)
+1. ~~**en.html**~~ BİTTİ (2026-07-28): `en.html` + `kvkk-notice.html` +
+   `privacy-policy.html` + `cookie-policy.html`; hreflang çiftleri 8 sayfada
+   (göreli URL, Faz 3'te mutlaklaşacak); çerez bandı `html[lang]`'e göre TR/EN;
+   ana nav'da "Anasayfa/Home" yazısı kaldırıldı (ikon + aria-label, tüm sayfalar).
+2. ~~EN yasal sayfalar~~ BİTTİ (1. maddeyle birlikte)
 3. Form servisi (form markup'ı `index.html`'de HTML yorumunda hazır; Formspree vb.
    bağlanınca yorum açılır + `action` girilir + kvkk §5 / gizlilik §3 güncellenir)
 4. Hukukçu onayı (3 yasal metin taslak; sayfa başlarındaki HTML yorumları işaretli)
