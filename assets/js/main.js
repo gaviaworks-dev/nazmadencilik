@@ -82,6 +82,25 @@
     window.addEventListener("mousedown", restoreSnap);
   }
 
+  /* --- Harita iframe odak halkası (Faz 3 Z3) ------------------------------
+     Chrome iframe öğesinde :focus/:focus-visible eşleştirmez ve focus/blur
+     olaylarını da vermez (odak doğrudan iç dokümana geçer). Tek güvenilir
+     sinyal: Tab keydown'ının hemen ardından activeElement kontrolü. Odak
+     iframe'den ana dokümana dönünce window 'focus' olayı halkayı temizler;
+     fare tıklaması Tab üretmediği için halka klavyeye sınırlı kalır. */
+  var mapFrame = document.querySelector(".map-frame");
+  var mapIframe = mapFrame && mapFrame.querySelector("iframe");
+  if (mapIframe) {
+    var clearMapFocus = function () { mapFrame.classList.remove("kbd-focus"); };
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      setTimeout(function () {
+        mapFrame.classList.toggle("kbd-focus", document.activeElement === mapIframe);
+      }, 0);
+    });
+    window.addEventListener("focus", clearMapFocus);
+    window.addEventListener("mousedown", clearMapFocus);
+  }
 
   /* --- Mobil menü -------------------------------------------------------- */
   var toggle = document.querySelector(".nav-toggle");

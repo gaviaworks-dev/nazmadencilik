@@ -951,6 +951,10 @@ textarea.input { min-height: 88px; resize: vertical; }
   border: 1px solid var(--line);
 }
 .map-frame iframe { display: block; width: 100%; height: 180px; border: 0; }
+/* Faz 3 Z3: Chrome, iframe öğesinde :focus/:focus-visible'ı eşleştirmiyor —
+   sınıfı main.js yönetir (iframe focus + K1'in kbd-nav klavye sinyali).
+   Halka yalnız klavye gezinmesinde görünür, fare tıklamasında görünmez. */
+.map-frame.kbd-focus { outline: 3px solid var(--brand); outline-offset: 3px; border-radius: var(--radius-lg); }
 
 /* ==========================================================================
    FOOTER — antrasit gradient, ortalanmış hiyerarşi (desil deseni)
