@@ -1,0 +1,236 @@
+/* ==========================================================================
+   NAZ MADENCİLİK — Design Tokens (KANONİK)
+   --------------------------------------------------------------------------
+   Bu dosya tasarım sisteminin tek kaynağıdır. Renk/tipografi/spacing SADECE
+   buradan türetilir. Mimari DESİL tokens.css ile birebirdir; yalnız değerler
+   "Antrasit & Bakır" yönüne göre değiştirilmiştir.
+
+   Palet kararı (onaylı, 2026-07-28): koyu zemin = antrasit (saf siyah değil),
+   vurgu = bakır/amber ailesi. Dayanak: logodaki turuncu çizgi. Açık zeminler
+   mavi tınılı değil SICAK nötrdür. Amber sınırlı mikro vurgudur (desil'deki
+   cyan rolü): eyebrow noktası, hero accent çizgisi, koyu zemin üstü parıltı.
+   ========================================================================== */
+
+/* --- Archivo (self-host, değişken: wght 100–900 · wdth 62–125) ------------
+   Tek aile: normal + gerçek italik kesim (R4). Display sesi ağırlıkla (800)
+   kurulur; genişlik her yerde %100 (--stretch-* token'ları).
+   latin + latin-ext (Türkçe ğşİı glifleri latin-ext'te). */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-var-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Gerçek italik kesim (R4: sentetik eğik yerine) — başlık vurguları için */
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-italic-var-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: italic;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("../fonts/archivo-italic-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  /* --- Marka paleti (logo esaslı, antrasit-bakır ailesi) ------------------
+     Mavi YOK. Koyu bloklar (hero/footer/section--dark) antrasit zeminlidir;
+     içerik bölümleri sıcak-nötr açık zeminde alternans yapar. */
+  --brand:      #A85A28;  /* Bakır · primer CTA · link · vurgu (beyaz metinle ≥4.5:1) */
+  --brand-700:  #8C4A1F;  /* Hover derinliği                                   */
+  --brand-deep: #17191D;  /* Antrasit · footer · koyu bloklar · hero overlay tabanı */
+  --graphite:   #23262B;  /* Başlık ve gövde metni · kart çerçeve tonu (desil --navy rolü) */
+  --amber:      #E8A455;  /* SINIRLI: eyebrow noktası / accent çizgi mikro parıltısı */
+
+  /* Açık, sıcak-nötr zeminler (mavi tın yerine taş/kum tını) */
+  --ground:      #F6F5F2;  /* Sayfa arka planı (beyazdan yumuşak, sıcak tın)   */
+  --surface:     #FFFFFF;  /* kart yüzeyi                                      */
+  --surface-alt: #EFEDE8;  /* bir tık koyu bölüm zemini                        */
+  --surface-warm:#EDE8E0;  /* belirgin "taş" bölüm zemini (beyaz-taş alternansı;
+                              desil --surface-blue rolü)                       */
+  --brand-soft:  #F7ECE1;  /* kart zeminleri (bakır tint ailesi)               */
+  --brand-tint:  #EBD8C5;  /* ince tint · ikon kutusu kenarı                   */
+  --brand-wash:  #F8F2EA;  /* nav/buton hover · açık bölüm zemini              */
+
+  /* Uyarı/hata — brand-soft/tint'in kırmızı karşılığı, aynı isim deseni */
+  --danger:      #B3261E;  /* hata metni/ikonu                                 */
+  --danger-deep: #8C1D18;  /* hover derinliği                                  */
+  --danger-soft: #FBEAEA;  /* uyarı bloğu zemini                               */
+  --danger-tint: #F3D6D6;  /* uyarı bloğu kenarı                               */
+
+  /* Metin tonları */
+  --white:     #FFFFFF;
+  --ink:       var(--graphite);  /* birincil metin                             */
+  --ink-soft:  #4C5058;          /* ikincil metin                              */
+  --ink-muted: #747982;          /* etiket / yardımcı metin                    */
+  --line:      #E4E1DB;          /* hairline / kenarlık                        */
+  --line-strong: #CDC8BF;
+
+  /* --- Gradient'ler (antrasit-bakır ailesi) ------------------------------ */
+  --grad-brand: linear-gradient(135deg, var(--brand) 0%, #C97C3A 100%);
+  --grad-deep:  linear-gradient(150deg, var(--brand-deep) 0%, var(--graphite) 100%);
+  --grad-halo:  radial-gradient(60% 60% at 72% 28%,
+                  rgba(232, 164, 85, 0.22) 0%,
+                  rgba(168, 90, 40, 0.16) 40%,
+                  rgba(246, 245, 242, 0) 72%);
+  --grad-soft:  linear-gradient(160deg, #FFFFFF 0%, var(--brand-soft) 100%);
+  /* Hero görsel okunurluk overlay'i (rötuş R1-2): orta bant açıldı ki açık ocak
+     dokusu görünsün — kaynak görsel zaten karartılmış geldiğinden beyaz başlık
+     kontrastı orta bantta da AA üstünde kalır. Üst bant header, alt bant kenar
+     kapanışı için koyu. */
+  --grad-hero-overlay: linear-gradient(180deg,
+                  rgba(20, 22, 26, 0.78) 0%,
+                  rgba(24, 22, 20, 0.48) 30%,
+                  rgba(30, 26, 21, 0.34) 52%,
+                  rgba(22, 21, 19, 0.55) 76%,
+                  rgba(16, 17, 20, 0.88) 100%);
+  /* (R2-1: yumuşak fade kaldırıldı — bölüm geçişleri keskindir, desil doktrini;
+     hero/page-head alt kenarı 3px bakır şeritle biter → main.css) */
+  /* Faaliyet sahnesi overlay'i (R7; R8'de güçlendirildi): tam ekran fotoğraf
+     üstünde metin her fotoğrafta okunur; overlay + blur + grain üçlüsü düşük
+     çözünürlüklü (700×800) kaynakları DOKU gibi gösterir */
+  --grad-stage-overlay: linear-gradient(180deg,
+                  rgba(20, 22, 26, 0.88) 0%,
+                  rgba(23, 25, 29, 0.62) 38%,
+                  rgba(20, 21, 23, 0.68) 70%,
+                  rgba(16, 17, 20, 0.92) 100%);
+  /* Sahne arka plan işlemesi (R8-b): 2–4px bandından deneme sonucu 3px —
+     2px'te 2×+ büyütme piksellenmesi seçiliyor, 4px sisli */
+  --stage-blur: 3px;
+  /* Footer gradient dili: antrasit diagonal taban, bakıra çalan koyu uç */
+  --grad-footer: linear-gradient(160deg,
+                  var(--graphite) 0%,
+                  var(--brand-deep) 48%,
+                  #241C14 100%);
+
+  /* --- Tipografi ----------------------------------------------------------
+     Tek aile: Archivo (değişken). Display sesi = expanded genişlik. */
+  --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body:    "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --stretch-display: 100%;   /* R4: geniş kesim kapatıldı (kullanıcı geri
+                                bildirimi — "yayılmış" durdu); ayar tek nokta */
+  --stretch-body:    100%;
+
+  /* Akışkan tip ölçeği (mobil → 1440px) — desil ile birebir */
+  --fs-display: clamp(2.5rem, 1.6rem + 3.9vw, 4rem);      /* H1 (tek)          */
+  --fs-h2:      clamp(1.75rem, 1.3rem + 1.9vw, 2.5rem);
+  --fs-h3:      clamp(1.2rem, 1.08rem + 0.5vw, 1.375rem);
+  --fs-h4:      1.0625rem;
+  --fs-lead:    clamp(1.05rem, 0.98rem + 0.35vw, 1.25rem);
+  --fs-body:    1rem;
+  --fs-sm:      0.9375rem;
+  --fs-eyebrow: 0.78rem;
+  --fs-label:   0.8125rem;
+
+  --lh-tight:   1.08;
+  --lh-snug:    1.2;
+  --lh-body:    1.65;
+  --measure:    80ch;         /* satır genişliği hedefi (R2-2: 78–82ch bandına genişletildi) */
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semi:    600;
+  --fw-bold:    700;
+  --fw-black:   800;
+
+  --tracking-eyebrow: 0.14em;
+  --tracking-label:   0.02em;
+  --tracking-tight:  -0.02em;   /* büyük başlıklarda sıkı */
+
+  /* --- Spacing ölçeği (4 / 8px tabanlı) — desil ile birebir --------------- */
+  --space-0:  0;
+  --space-1:  0.25rem;   /*  4 */
+  --space-2:  0.5rem;    /*  8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-5:  1.5rem;    /* 24 */
+  --space-6:  2rem;      /* 32 */
+  --space-7:  3rem;      /* 48 */
+  --space-8:  4rem;      /* 64 */
+  --space-9:  5rem;      /* 80 */
+  --space-10: 6rem;      /* 96 */
+  --space-11: 8rem;      /* 128 */
+
+  /* Bölümler arası dikey ritim (sabit) */
+  --section-y: clamp(4rem, 2.5rem + 6.5vw, 8rem);
+  /* Üst bilgi barı yüksekliği — JS ölçümle senkronlar */
+  --topbar-h: 38px;
+  /* Header yüksekliği (header-inner min-height + mobil menü inset'leri bundan okur) */
+  --header-h: 76px;
+  /* Hero tam ekran yüksekliği (rötuş R1-7) — svh desteği yoksa vh fallback;
+     topbar akışta kaldığından hero-inner bunu calc ile topbar kadar kısar */
+  --hero-min-h: 100vh;
+  --container:  1200px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+
+  /* --- Köşe yarıçapları ---------------------------------------------------
+     Köşe dili: pill YOK. 50% yalnız gerçek daire (dot/ikon dairesi). */
+  --radius-xs: 4px;    /* chip · tag · badge */
+  --radius-sm: 6px;    /* buton · input · ikon kutusu */
+  --radius-md: 10px;   /* kart */
+  --radius-lg: 12px;   /* medya konteyner · büyük blok */
+  --radius-xl: 12px;   /* alias — büyük blok (pill/aşırı yuvarlak yok) */
+
+  /* --- Gölgeler (düşük opaklık; nötr antrasit + bakır tınlı) -------------- */
+  --shadow-xs: 0 1px 2px rgba(23, 25, 29, 0.06);
+  --shadow-sm: 0 2px 8px rgba(23, 25, 29, 0.07),
+               0 1px 2px rgba(23, 25, 29, 0.05);
+  --shadow-md: 0 10px 24px -12px rgba(120, 66, 31, 0.22),
+               0 2px 6px rgba(23, 25, 29, 0.06);
+  --shadow-lg: 0 24px 48px -20px rgba(120, 66, 31, 0.32),
+               0 6px 14px -8px rgba(23, 25, 29, 0.12);
+  --shadow-cta: 0 10px 24px -8px rgba(168, 90, 40, 0.48);
+  /* Form odak halkaları — açık zeminde bakır, koyu zeminde amber */
+  --ring-brand: 0 0 0 3px rgba(168, 90, 40, 0.16);
+  --ring-amber: 0 0 0 3px rgba(232, 164, 85, 0.28);
+
+  /* --- Hareket ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur:  180ms;         /* 150–200ms yumuşak geçiş bandı */
+  --dur-slow: 320ms;
+  /* Scroll snap (R5): mandatory YASAK — uzun bölümde kullanıcıyı hapseder */
+  --snap-strictness: proximity;
+
+  /* --- Katmanlar ---------------------------------------------------------- */
+  --z-header: 100;
+  --z-overlay: 200;
+}
+
+/* svh: mobilde tarayıcı çubuğu açılıp kapanınca zıplamayan viewport birimi */
+@supports (min-height: 100svh) {
+  :root { --hero-min-h: 100svh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; --dur-slow: 0ms; }
+}
