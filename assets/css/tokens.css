@@ -123,9 +123,11 @@
                   rgba(23, 25, 29, 0.62) 38%,
                   rgba(20, 21, 23, 0.68) 70%,
                   rgba(16, 17, 20, 0.92) 100%);
-  /* Sahne arka plan işlemesi (R8-b): 2–4px bandından deneme sonucu 3px —
-     2px'te 2×+ büyütme piksellenmesi seçiliyor, 4px sisli */
-  --stage-blur: 3px;
+  /* Sahne arka plan işlemesi (R11 revizyonu): blur kaldırıldı — kullanıcı
+     geri bildirimi "çok bulanık". Upscale yumuşamasını grain + overlay +
+     düşük doygunluk maskeler; kalıcı çözüm 1920px gerçek fotoğraflar
+     (CLAUDE.md / Açık işler). */
+  --stage-blur: 0px;
   /* Footer gradient dili: antrasit diagonal taban, bakıra çalan koyu uç */
   --grad-footer: linear-gradient(160deg,
                   var(--graphite) 0%,
@@ -186,9 +188,9 @@
   --topbar-h: 38px;
   /* Header yüksekliği (header-inner min-height + mobil menü inset'leri bundan okur) */
   --header-h: 76px;
-  /* Hero tam ekran yüksekliği (rötuş R1-7) — svh desteği yoksa vh fallback;
-     topbar akışta kaldığından hero-inner bunu calc ile topbar kadar kısar */
-  --hero-min-h: 100vh;
+  /* Tam ekran bölüm yüksekliği (R9): header/topbar saydam ve İÇERİĞİN ÜSTÜNE
+     bindiği için çıkarma yok — bölümler tam viewport. svh yoksa vh fallback. */
+  --screen-h: 100vh;
   --container:  1200px;
   --container-narrow: 760px;
   --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
@@ -218,8 +220,10 @@
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --dur:  180ms;         /* 150–200ms yumuşak geçiş bandı */
   --dur-slow: 320ms;
-  /* Scroll snap (R5): mandatory YASAK — uzun bölümde kullanıcıyı hapseder */
-  --snap-strictness: proximity;
+  /* Scroll snap (R17): SERT "tık tık" — mandatory. Güvenlik: TÜM bölümler
+     hizalı; viewport'tan uzun bölümler CSS spec'in "snap alanı snapport'u
+     kaplıyorsa serbest kayış" kuralıyla içeride hapsetmez, sınırda yakalar. */
+  --snap-strictness: mandatory;
 
   /* --- Katmanlar ---------------------------------------------------------- */
   --z-header: 100;
@@ -228,7 +232,7 @@
 
 /* svh: mobilde tarayıcı çubuğu açılıp kapanınca zıplamayan viewport birimi */
 @supports (min-height: 100svh) {
-  :root { --hero-min-h: 100svh; }
+  :root { --screen-h: 100svh; }
 }
 
 @media (prefers-reduced-motion: reduce) {

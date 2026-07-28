@@ -22,17 +22,13 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>+90 212 801 15 49</span>
         </a>
-        <a href="mailto:info@nazmadencilik.com.tr">
+        <a class="topbar-mail" href="mailto:info@nazmadencilik.com.tr">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <span>info@nazmadencilik.com.tr</span>
         </a>
       </div>
       <div class="topbar-right">
-        <div class="topbar-lang">
-          <span class="lang-active" aria-current="true">TR</span>
-          <span class="lang-sep" aria-hidden="true">|</span>
-          <a class="lang-passive" href="en.html" hreflang="en" lang="en">EN</a>
-        </div>
+        <a class="topbar-cta" href="#iletisim">Teklif Alın <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </div>
@@ -54,14 +50,19 @@
         </ul>
       </nav>
       <div class="header-cta">
-        <a class="btn btn--primary" href="#iletisim">Teklif Alın</a>
+        <div class="header-lang">
+          <span class="lang-active" aria-current="true">TR</span>
+          <span class="lang-sep" aria-hidden="true">|</span>
+          <a class="lang-passive" href="en.html" hreflang="en" lang="en">EN</a>
+        </div>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Menüyü aç/kapat"><span></span></button>
       </div>
     </div>
   </header>
 
   <main id="icerik">
-    <section class="hero" id="anasayfa">
+    <div class="hero-slot" id="anasayfa" data-theme="dark">
+    <section class="hero hero--curtain">
       <div class="hero-bg">
         <img src="assets/img/hero/quarry-aerial.webp" alt="" width="1680" height="980" fetchpriority="high">
       </div>
@@ -78,159 +79,118 @@
       </div>
       <a class="hero-scroll" href="#kurumsal" aria-label="Aşağı kaydır"></a>
     </section>
+    </div>
 
-    <section class="section" id="kurumsal">
-      <div class="container">
-        <div class="section-head reveal">
+    <section class="section section--white section--screen" id="kurumsal" data-theme="light">
+      <div class="container reveal reveal--rise">
+        <div class="section-head">
           <p class="eyebrow"><span class="eyebrow-num">01</span><span class="eyebrow-sep" aria-hidden="true">/</span><span class="eyebrow-label">Kurumsal</span></p>
           <h2 class="section-title"><em>Kurumsal</em></h2>
         </div>
-        <div class="about-copy reveal">
+        <div class="about-split">
+          <div class="about-gallery">
+            <figure class="gallery-main">
+              <img src="assets/img/corporate/corporate-1.webp" alt="" width="395" height="243">
+              <span class="gallery-badge" aria-hidden="true"><span class="num">3</span><span class="lbl">Kıtada<br>Pazar Ağı</span></span>
+            </figure>
+            <div class="gallery-thumbs">
+              <button class="gallery-thumb is-active" type="button" data-full="assets/img/corporate/corporate-1.webp" aria-label="Galeri görseli 1">
+                <img src="assets/img/corporate/corporate-1.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+              <button class="gallery-thumb" type="button" data-full="assets/img/corporate/corporate-2.webp" aria-label="Galeri görseli 2">
+                <img src="assets/img/corporate/corporate-2.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+              <button class="gallery-thumb" type="button" data-full="assets/img/corporate/corporate-3.webp" aria-label="Galeri görseli 3">
+                <img src="assets/img/corporate/corporate-3.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+              <button class="gallery-thumb" type="button" data-full="assets/img/corporate/corporate-4.webp" aria-label="Galeri görseli 4">
+                <img src="assets/img/corporate/corporate-4.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+              <button class="gallery-thumb" type="button" data-full="assets/img/corporate/corporate-5.webp" aria-label="Galeri görseli 5">
+                <img src="assets/img/corporate/corporate-5.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+              <button class="gallery-thumb" type="button" data-full="assets/img/corporate/corporate-6.webp" aria-label="Galeri görseli 6">
+                <img src="assets/img/corporate/corporate-6.webp" alt="" width="395" height="243" loading="lazy">
+              </button>
+            </div>
+          </div>
+          <div class="about-copy">
             <p><strong>Naz Madencilik Turizm İnşaat Taahhüt İthalat İhracat Sanayi ve Ticaret Ltd. Şti.</strong> adıyla, merkezi İstanbul'da kurulan şirketimiz, kısa zamanda faaliyette bulunduğu alanlarda başarıyı ve mükemmelliği yakalamıştır. Şirketimizin başarısı, gerek ihracat gerekse ithalat alanında birlikte iş yaptığı firmalarla tam bir uyum içerisinde çalışmasından ve verdiği güvenle adından söz ettiren, saygın bir firma olmasından kaynaklanmaktadır.</p>
             <p>Türkiye sınırlarını aşarak dünyaya açılan şirketimiz, üreticiler ve kullanıcılar arasında bir köprüdür. Şirketimiz, dış ticaret alanında <span class="text-accent">üç kıtaya yayılan</span> geniş pazar ağıyla, müşterilerimizin talep ettiği ürünleri gerek üretim yapan gerekse direk satışta bulunan çeşitli firmalara uygun şartlarda güvenilir ve dürüst hizmetle mal temin etmektedir. İş ortakları ve müşterileriyle olduğu gibi çalışanlarıyla da dürüstlüğe ve güvene dayalı bir ortam oluşturan şirketimiz, en kaliteli ürünleri ve hizmetleri sunmak için bilgi ve teknolojisini sürekli geliştirmektedir.</p>
             <p>Şirketimiz, modern dünyada insana yatırımın ve müşteri ilişkileri yönetiminin önemine inanarak, hem bilinçli personel, hem de bilinçli müşteri felsefesiyle, çalışanlarına sürekli eğitimler vererek, bilgi ve kültür seviyelerini yükseltip istihdam kalitesini artırmayı, ahlak ve iyi niyet çerçevesinde temel ilke edinmiştir. Şirketimiz, iç ve dış piyasalarda faaliyette bulunduğu alanlarda, pazarımıza sürekli ivme kazandıran bir güç olmak adına sağlam ve dinamik yapısıyla çalışmakta, çağın gelecek vadeden iş kollarında araştırmalarını sürdürmektedir.</p>
           </div>
-        <aside class="fact-rail reveal">
-          <div class="fact">
-            <span class="fact-value fact-value--num">3</span>
-            <p class="spec-label">Kıtaya Yayılan Pazar Ağı</p>
-          </div>
-          <div class="fact">
-            <span class="fact-value">İstanbul</span>
-            <p class="spec-label">Merkez</p>
-          </div>
-          <div class="fact">
-            <span class="fact-value">İthalat · İhracat</span>
-            <p class="spec-label">Dış Ticaret</p>
-          </div>
-        </aside>
-        <div class="about-strip stagger">
-          <figure class="reveal"><img src="assets/img/corporate/corporate-1.webp" alt="" width="395" height="243" loading="lazy"></figure>
-          <figure class="reveal"><img src="assets/img/corporate/corporate-2.webp" alt="" width="395" height="243" loading="lazy"></figure>
-          <figure class="reveal"><img src="assets/img/corporate/corporate-3.webp" alt="" width="395" height="243" loading="lazy"></figure>
-          <figure class="reveal"><img src="assets/img/corporate/corporate-4.webp" alt="" width="395" height="243" loading="lazy"></figure>
-          <figure class="reveal"><img src="assets/img/corporate/corporate-5.webp" alt="" width="395" height="243" loading="lazy"></figure>
-          <figure class="reveal"><img src="assets/img/corporate/corporate-6.webp" alt="" width="395" height="243" loading="lazy"></figure>
         </div>
       </div>
     </section>
 
-    <section class="section section--tint" id="urunler">
-      <div class="container">
-        <div class="section-head reveal">
+    <section class="section section--tint section--screen" id="urunler" data-theme="light">
+      <div class="container reveal reveal--rise">
+        <div class="section-head">
           <p class="eyebrow"><span class="eyebrow-num">02</span><span class="eyebrow-sep" aria-hidden="true">/</span><span class="eyebrow-label">Ürün Portföyü</span></p>
           <h2 class="section-title">Ürün <em>Portföyü</em></h2>
         </div>
         <div class="case-grid stagger">
           <article class="case-card reveal">
-            <p class="case-tag">Öğütücü Medya</p>
-            <h3>Çelik Bilya</h3>
-            <!-- Gerçek ürün fotoğrafı gelirse: bu .case-media içeriği tek <img> ile değişir -->
-            <div class="case-media" aria-hidden="true">
-              <svg viewBox="0 0 220 150" fill="none" focusable="false">
-                <line x1="12" y1="132" x2="208" y2="132" stroke="var(--line-strong)" stroke-width="1.5"/>
-                <line x1="26" y1="132" x2="26" y2="138" stroke="var(--line-strong)"/>
-                <line x1="62" y1="132" x2="62" y2="138" stroke="var(--line-strong)"/>
-                <line x1="112" y1="132" x2="112" y2="138" stroke="var(--line-strong)"/>
-                <line x1="176" y1="132" x2="176" y2="138" stroke="var(--line-strong)"/>
-                <circle cx="26" cy="124" r="8" fill="var(--brand)"/>
-                <circle cx="62" cy="118" r="14" stroke="var(--brand)" stroke-width="2"/>
-                <circle cx="112" cy="110" r="22" stroke="var(--brand)" stroke-width="2"/>
-                <circle cx="176" cy="98" r="34" stroke="var(--graphite)" stroke-width="2"/>
-                <circle cx="196" cy="78" r="3" fill="var(--amber)"/>
-              </svg>
-            </div>
-            <div class="case-content">
+            <!-- Gerçek ürün fotoğrafı gelince yalnız src değişir (tema eşleşmeli vekil görsel) -->
+            <figure class="case-media"><img src="assets/img/sectors/iron-steel.webp" alt="" width="700" height="800" loading="lazy"></figure>
+            <div class="case-body">
+              <p class="case-tag">Öğütücü Medya</p>
+              <h3>Çelik Bilya</h3>
+              <div class="case-content">
               <p class="spec-label">Çap Aralığı</p>
               <p class="case-figure">30–110 <span class="unit">mm</span></p>
               <p class="case-desc">Farklı kimyasal kompozisyonlarda 30 mm çapından 110 mm'ye kadar öğütücü çelik bilya.</p>
             </div>
+            </div>
           </article>
           <article class="case-card reveal">
-            <p class="case-tag">İş Ortaklığı</p>
-            <h3>Madeni Yağ</h3>
-            <!-- Gerçek ürün fotoğrafı gelirse: bu .case-media içeriği tek <img> ile değişir -->
-            <div class="case-media" aria-hidden="true">
-              <svg viewBox="0 0 220 150" fill="none" focusable="false">
-                <path d="M14 34 C 50 22, 90 46, 126 34 S 192 26, 206 34" stroke="var(--graphite)" stroke-width="2"/>
-                <path d="M14 58 C 50 46, 90 70, 126 58 S 192 50, 206 58" stroke="var(--brand)" stroke-width="2" opacity="0.75"/>
-                <path d="M14 82 C 50 70, 90 94, 126 82 S 192 74, 206 82" stroke="var(--brand)" stroke-width="2" opacity="0.45"/>
-                <path d="M110 96 C 103 108, 97 116, 97 124 a 13 13 0 0 0 26 0 c 0 -8 -6 -16 -13 -28 Z" fill="var(--brand)"/>
-                <circle cx="106" cy="124" r="3" fill="var(--amber)"/>
-              </svg>
-            </div>
-            <div class="case-content">
+            <!-- Gerçek ürün fotoğrafı gelince yalnız src değişir (tema eşleşmeli vekil görsel) -->
+            <figure class="case-media"><img src="assets/img/sectors/oil-fuel.webp" alt="" width="700" height="800" loading="lazy"></figure>
+            <div class="case-body">
+              <p class="case-tag">İş Ortaklığı</p>
+              <h3>Madeni Yağ</h3>
+              <div class="case-content">
               <p class="case-figure case-figure--text">OMV Petrol Ofisi</p>
               <p class="case-desc">OMV Petrol Ofisi Madeni Yağları ile maden sektörüne yönelik kanal partnerliği çatısı altında kurulan iş ortaklığı.</p>
             </div>
+            </div>
           </article>
           <article class="case-card reveal">
-            <p class="case-tag">Flotasyon &amp; Proses</p>
-            <h3>Kimyasal Maddeler</h3>
-            <!-- Gerçek ürün fotoğrafı gelirse: bu .case-media içeriği tek <img> ile değişir -->
-            <div class="case-media" aria-hidden="true">
-              <svg viewBox="0 0 220 150" fill="none" focusable="false">
-                <path d="M46 42 L110 26 L174 42 M46 42 L78 84 M110 26 L78 84 M110 26 L142 84 M174 42 L142 84 M78 84 L46 126 M78 84 L110 126 M142 84 L110 126 M142 84 L174 126 M46 126 L110 126 L174 126" stroke="var(--line-strong)" stroke-width="1.5"/>
-                <circle cx="46" cy="42" r="5" fill="var(--brand)"/>
-                <circle cx="110" cy="26" r="5" fill="var(--brand)"/>
-                <circle cx="174" cy="42" r="5" fill="var(--brand)"/>
-                <circle cx="78" cy="84" r="6" stroke="var(--brand)" stroke-width="2"/>
-                <circle cx="142" cy="84" r="6" fill="var(--amber)"/>
-                <circle cx="46" cy="126" r="5" stroke="var(--graphite)" stroke-width="2"/>
-                <circle cx="110" cy="126" r="5" fill="var(--brand)"/>
-                <circle cx="174" cy="126" r="5" stroke="var(--graphite)" stroke-width="2"/>
-              </svg>
-            </div>
-            <div class="case-content">
+            <!-- Gerçek ürün fotoğrafı gelince yalnız src değişir (tema eşleşmeli vekil görsel) -->
+            <figure class="case-media"><img src="assets/img/sectors/mining.webp" alt="" width="700" height="800" loading="lazy"></figure>
+            <div class="case-body">
+              <p class="case-tag">Flotasyon &amp; Proses</p>
+              <h3>Kimyasal Maddeler</h3>
+              <div class="case-content">
               <p class="spec-label">Ürün Çeşidi</p>
               <p class="case-figure">11 <span class="unit">kalem</span></p>
-              <div class="case-desc">
-                <ul class="chip-list">
-                  <li class="chip">MIBC</li>
-                  <li class="chip">Demir Sülfat</li>
-                  <li class="chip">Bakır Sülfat</li>
-                  <li class="chip">Çinko Tozu</li>
-                  <li class="chip">Çinko Oksit</li>
-                  <li class="chip">Potasyum Etil Ksantat (Z3)</li>
-                  <li class="chip">Sodyum İsopropil Ksantat (Z11)</li>
-                  <li class="chip">Potasyum Amil Ksantat (Z5)</li>
-                  <li class="chip">Çinko Sülfat</li>
-                  <li class="chip">Zirkonyum</li>
-                  <li class="chip">Zirkonyum Bilya</li>
-                </ul>
-              </div>
+              <p class="case-desc" title="MIBC, demir sülfat, bakır sülfat, çinko tozu, çinko oksit, Potasyum Etil Ksantat (Z3), Sodyum İsopropil Ksantat (Z11), Potasyum Amil Ksantat (Z5), çinko sülfat, Zirkonyum ve Zirkonyum bilya">MIBC, demir sülfat, bakır sülfat, çinko tozu, çinko oksit, Potasyum Etil Ksantat (Z3), Sodyum İsopropil Ksantat (Z11), Potasyum Amil Ksantat (Z5), çinko sülfat, Zirkonyum ve Zirkonyum bilya.</p>
+            </div>
             </div>
           </article>
           <article class="case-card reveal">
-            <p class="case-tag">Ambalaj</p>
-            <h3>Tutkal</h3>
-            <!-- Gerçek ürün fotoğrafı gelirse: bu .case-media içeriği tek <img> ile değişir -->
-            <div class="case-media" aria-hidden="true">
-              <svg viewBox="0 0 220 150" fill="none" focusable="false">
-                <path d="M24 30 h172 v34 l-14 12 14 12 v32 h-172 v-32 l14 -12 -14 -12 Z" stroke="var(--line-strong)" stroke-width="1.5"/>
-                <path d="M24 64 l14 12 -14 12 M196 64 l-14 12 14 12" stroke="var(--line-strong)" stroke-width="1.5"/>
-                <rect x="24" y="30" width="172" height="34" fill="var(--brand-tint)" opacity="0.55"/>
-                <rect x="24" y="88" width="172" height="32" fill="var(--brand-tint)" opacity="0.3"/>
-                <path d="M38 76 l12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8 12 -8 12 8" stroke="var(--brand)" stroke-width="2.5" stroke-linejoin="round"/>
-                <circle cx="182" cy="70" r="3" fill="var(--amber)"/>
-              </svg>
-            </div>
-            <div class="case-content">
+            <!-- Gerçek ürün fotoğrafı gelince yalnız src değişir (tema eşleşmeli vekil görsel) -->
+            <figure class="case-media"><img src="assets/img/sectors/transport.webp" alt="" width="700" height="800" loading="lazy"></figure>
+            <div class="case-body">
+              <p class="case-tag">Ambalaj</p>
+              <h3>Tutkal</h3>
+              <div class="case-content">
               <p class="case-figure case-figure--text">Sıcak · Soğuk</p>
               <p class="case-desc">Sıcak ve Soğuk Ambalaj tutkalları.</p>
+            </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section--dark axes-stage" id="faaliyet">
+    <section class="section--dark axes-stage" id="faaliyet" data-theme="dark">
       <div class="axes-bg" aria-hidden="true">
         <div class="axes-bg-layer"></div>
         <div class="axes-bg-layer"></div>
       </div>
       <div class="container">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="eyebrow eyebrow--on-dark"><span class="eyebrow-num">03</span><span class="eyebrow-sep" aria-hidden="true">/</span><span class="eyebrow-label">Faaliyet Alanları</span></p>
           <h2 class="section-title">Faaliyet <em>Alanları</em></h2>
           <p class="section-lead">Naz Madencilik, ilgili mercilerden izin ve ruhsat istihsal etmek şartı ile ürün imalatı, malzeme ve mal alım-satımı; ithalat-ihracat ve transit ticaret işlerini gerçekleştirebilme; pazarlama ve organizasyonunu kurma; ihalelere iştirak edebilme; distribütörlük alma; acentelik hizmeti sunma, tasarruf ve yatırımlarda bulunma hakkına sahiptir.</p>
@@ -245,42 +205,42 @@
       </div>
       <div class="axes-strip">
         <div class="axes-track" aria-label="Faaliyet alanları">
-          <button class="axis is-active" type="button" aria-pressed="true" data-bg="assets/img/sectors/iron-steel.webp">
+          <button class="axis is-active" type="button" aria-pressed="true" data-bg="assets/img/sectors/iron-steel.webp" data-bg-full="assets/img/sectors/iron-steel-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Demir Çelik</span>
             <span class="axis-detail"><p>Malzeme alım-satımı, ithalat ve ihracat</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/hardware.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/hardware.webp" data-bg-full="assets/img/sectors/hardware-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Demir Hırdavat</span>
             <span class="axis-detail"><p>Alım-satım, pazarlama ve organizasyon</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/construction.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/construction.webp" data-bg-full="assets/img/sectors/construction-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">İnşaat</span>
             <span class="axis-detail"><p>Malzeme temini ve ihalelere iştirak</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/work-safety.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/work-safety.webp" data-bg-full="assets/img/sectors/work-safety-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">İş Güvenliği</span>
             <span class="axis-detail"><p>Ürün temini, distribütörlük ve acentelik</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/mining.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/mining.webp" data-bg-full="assets/img/sectors/mining-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Madencilik</span>
             <span class="axis-detail"><p>İthalat, ihracat ve transit ticaret</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/transport.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/transport.webp" data-bg-full="assets/img/sectors/transport-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Nakliye</span>
             <span class="axis-detail"><p>İç ve dış piyasalarda transit ticaret</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/automotive.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/automotive.webp" data-bg-full="assets/img/sectors/automotive-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Otomotiv Sektörü</span>
             <span class="axis-detail"><p>Mal alım-satımı ve distribütörlük</p></span>
           </button>
-          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/oil-fuel.webp">
+          <button class="axis" type="button" aria-pressed="false" data-bg="assets/img/sectors/oil-fuel.webp" data-bg-full="assets/img/sectors/oil-fuel-2x.webp">
             <span class="axis-photo" aria-hidden="true"></span>
             <span class="axis-title">Petrol ve Akaryakıt</span>
             <span class="axis-detail"><p>Alım-satım, ithalat ve ihracat</p></span>
@@ -289,7 +249,7 @@
       </div>
     </section>
 
-    <aside class="next-block" aria-label="Bölümlere devam">
+    <aside class="next-block" aria-label="Bölümlere devam" data-theme="light">
       <div class="container next-inner">
         <p class="next-label">Devam</p>
         <p class="next-links">
@@ -302,9 +262,9 @@
       </div>
     </aside>
 
-    <section class="section" id="iletisim">
-      <div class="container">
-        <div class="section-head reveal">
+    <section class="section section--white section--screen" id="iletisim" data-theme="light">
+      <div class="container reveal reveal--rise">
+        <div class="section-head">
           <p class="eyebrow"><span class="eyebrow-num">04</span><span class="eyebrow-sep" aria-hidden="true">/</span><span class="eyebrow-label">İletişim</span></p>
           <h2 class="section-title"><em>İletişim</em></h2>
         </div>
@@ -371,7 +331,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" data-theme="dark">
     <div class="container footer-inner">
       <a class="footer-brand" href="#anasayfa" aria-label="Naz Madencilik — başa dön">
         <img src="assets/img/logo-white.webp" alt="Naz Madencilik" width="160" height="100">
@@ -393,6 +353,13 @@
       <p class="footer-bottom">© 2026 Naz Madencilik. Tüm hakları saklıdır.</p>
     </div>
   </footer>
+
+  <dialog class="lightbox" id="galeri-lightbox" aria-label="Kurumsal görsel galerisi">
+    <button class="lightbox-close" type="button" aria-label="Kapat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <button class="lightbox-prev" type="button" aria-label="Önceki görsel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+    <img class="lightbox-img" src="assets/img/corporate/corporate-1.webp" alt="">
+    <button class="lightbox-next" type="button" aria-label="Sonraki görsel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  </dialog>
 
   <script src="assets/js/main.js"></script>
 </body>
