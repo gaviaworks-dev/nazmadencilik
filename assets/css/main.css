@@ -33,6 +33,12 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   html.has-snap #faaliyet,
   html.has-snap #iletisim { scroll-snap-align: start; }
   html.has-snap .site-footer { scroll-snap-align: end; }
+  /* Faz 3 K1: Tab gezinmesinde mandatory snap, odak kaydırmasını geri çekip
+     odaklı öğeyi viewport dışında bırakabiliyor (galeri küçükleri, "Devam"
+     linkleri). Tab'da snap geçici bırakılır; tekerlek/dokunma/tıklamayla
+     kaydırmaya dönülünce geri gelir — ilk kaydırma zaten snap'leyeceği için
+     görünür sıçrama olmaz. Sınıfı main.js yönetir. */
+  html.has-snap.kbd-nav { scroll-snap-type: none; }
 }
 
 body {

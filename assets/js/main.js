@@ -67,6 +67,22 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* --- Klavye gezinmesinde snap bırakması (Faz 3 K1) ----------------------
+     Mandatory snap, Tab odak kaydırmasını en yakın snap noktasına geri çekip
+     odaklı öğeyi viewport dışında bırakabiliyor. Tab'da snap geçici kapanır
+     (CSS: html.has-snap.kbd-nav); tekerlek/dokunma/tıklama gelince geri açılır. */
+  var snapRoot = document.documentElement;
+  if (snapRoot.classList.contains("has-snap")) {
+    var restoreSnap = function () { snapRoot.classList.remove("kbd-nav"); };
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Tab") snapRoot.classList.add("kbd-nav");
+    });
+    window.addEventListener("wheel", restoreSnap, { passive: true });
+    window.addEventListener("touchstart", restoreSnap, { passive: true });
+    window.addEventListener("mousedown", restoreSnap);
+  }
+
+
   /* --- Mobil menü -------------------------------------------------------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".nav");
