@@ -22,7 +22,17 @@ Sıra kullanıcı onayıyla ilerler. Her adım bitince işaretlenir.
       `kvkk-notice.html` + `privacy-policy.html` + `cookie-policy.html`; hreflang
       çiftleri tüm sayfalarda; çerez bandı `html[lang]`'e göre iki dilli; DOM
       birebirliği ve linkler script'le, etkileşimler headless Chrome ile doğrulandı.)
-- [ ] **6. Faz 3** — a11y, SEO/OG, Lighthouse
+- [ ] **6. Faz 3** — a11y, SEO/OG, Lighthouse. Ölçüm turu yapıldı (2026-07-28;
+      skorlar: P 94-100 / A 96-100 / BP 100 / SEO 54 — SEO düşüşü kasıtlı
+      noindex + göreli hreflang'dan ibaret). Bu turda düzeltildi: K1 klavye-snap
+      çakışması, K2 kontrast (--ink-muted #747982→#70757E, kullanıcı onaylı
+      global token koyulaştırma, 4.63:1 AA), Ö3 landmark rolleri, Z3 harita
+      odak halkası. Sonuç: axe 3 sayfada temiz, Lighthouse A11y 100.
+      - ERTELENDİ (görsel kalite riski, ayrı turda yapılacak): **Ö1** hero
+        görseli yeniden sıkıştırma (~152KB tasarruf, mobil LCP 2.7s→) ve
+        **Ö2** kart/thumb görsellerine küçük varyant + srcset (~200KB).
+      - BEKLEMEDE (custom domain kararı): canonical, OG/Twitter meta seti,
+        og-image, hreflang'ların mutlak URL'ye çevrilmesi.
 - [x] **7. Faz 4 (önizleme)** — public repo + GitHub Pages deploy yapıldı (2026-07-28,
       noindex+robots ile). Yayına açılış: yasal onay + form servisi sonrası.
 
