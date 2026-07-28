@@ -26,13 +26,15 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   html.has-snap { scroll-snap-type: y var(--snap-strictness); }
   /* R17: mandatory güvenli olsun diye HER bölüm hizalı — uzun bölümlerin
      içi spec gereği serbest (alan snapport'u kaplayınca zorlanmaz), sınırlar
-     sert yakalar. Footer 'end' hizası: sayfa dibi geçerli durak kalır. */
-  html.has-snap .hero-slot,
-  html.has-snap #kurumsal,
-  html.has-snap #urunler,
-  html.has-snap #faaliyet,
-  html.has-snap #iletisim { scroll-snap-align: start; }
-  html.has-snap .site-footer { scroll-snap-align: end; }
+     sert yakalar. Footer 'end' hizası: sayfa dibi geçerli durak kalır.
+     M5: durak listesi ID YERİNE data-snap özniteliğiyle kurulur. Eskiden
+     seçiciler TR ID'lerine sabitti (#kurumsal…); Faz 2'de en.html DOM'u
+     kopyalanıp ID'ler değişince (#corporate…) EN sayfası sessizce TÜM
+     duraklarını kaybetmişti (yalnız hero + footer kalmıştı). Öznitelik
+     dile bağımsızdır ve ileride ID değişse de kopmaz; data-* zaten bu
+     projenin davranış kancası idiomu (data-theme, data-bg). */
+  html.has-snap [data-snap="start"] { scroll-snap-align: start; }
+  html.has-snap [data-snap="end"] { scroll-snap-align: end; }
   /* Faz 3 K1: Tab gezinmesinde mandatory snap, odak kaydırmasını geri çekip
      odaklı öğeyi viewport dışında bırakabiliyor (galeri küçükleri, "Devam"
      linkleri). Tab'da snap geçici bırakılır; tekerlek/dokunma/tıklamayla
