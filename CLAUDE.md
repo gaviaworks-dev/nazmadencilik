@@ -94,11 +94,10 @@ README.md             # (Faz 4)
       (her dosyanın başında HTML yorumu olarak da işaretli).
 - [ ] **Ürün fotoğrafları:** Ürün Portföyü panellerindeki soyut SVG'ler dekoratif vekildir;
       gerçek ürün fotoğrafı gelirse ilgili `.acc-media` içeriği tek `<img>` ile değişir.
-- [ ] **Sektör fotoğrafları:** 8 sektör için min 1920px genişlikte gerçek fotoğraf
-      (patrondan). Mevcut 700×800 kaynaklar tam ekran sahnede 2–2.8× geriliyor;
-      şimdilik blur+grain+overlay işlemesiyle doku olarak kullanılıyor. Yüksek
-      çözünürlüklüler gelince `assets/img/sectors/` altına aynı adlarla konur,
-      işleme hafifletilebilir.
+- [x] **Sektör fotoğrafları:** Kullanıcı talimatıyla (2026-07-28) 8 sektör Unsplash
+      ÜCRETSİZ lisanslı 1920px stok fotoğraflarla değiştirildi (premium/filigranlı
+      sonuçlar elendi; lisans: ticari kullanım serbest, atıf zorunlu değil).
+      Patrondan gerçek saha fotoğrafları gelirse aynı adlarla değiştirilebilir.
 - [ ] **Kimyasal listesi kırpımı:** Ürün kartlarında eşit yükseklik için açıklamalar
       4 satıra sabitlendi (kullanıcı talebi); Kimyasal Maddeler listesinin kuyruğu
       kartta görünmüyor (tam liste title'da). Canlı öncesi karar: kırpım kalsın mı,
