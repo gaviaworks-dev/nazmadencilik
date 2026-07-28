@@ -99,6 +99,13 @@ README.md             # (Faz 4)
       şimdilik blur+grain+overlay işlemesiyle doku olarak kullanılıyor. Yüksek
       çözünürlüklüler gelince `assets/img/sectors/` altına aynı adlarla konur,
       işleme hafifletilebilir.
+- [ ] **Kimyasal listesi kırpımı:** Ürün kartlarında eşit yükseklik için açıklamalar
+      4 satıra sabitlendi (kullanıcı talebi); Kimyasal Maddeler listesinin kuyruğu
+      kartta görünmüyor (tam liste title'da). Canlı öncesi karar: kırpım kalsın mı,
+      tam liste başka yerde mi gösterilsin.
+- [ ] **Deneyim yılı rozeti:** Kurumsal galerisindeki rozet şimdilik gerçek "3 Kıtada
+      Pazar Ağı" değerini taşıyor; "X yıllık" tarzı deneyim rakamı KAYNAKTA YOK ve
+      uydurulamaz — patrondan kuruluş yılı/deneyim rakamı gelince tek satırda değişir.
 - [ ] **Vektör logo:** kaynak 160×100 PNG retinada yumuşak; SVG patrondan beklemede.
       Geldiğinde sayfalarda yalnız `src` değişecek (kutu oran-bağımsız).
 - [ ] **EN sayfası (Faz 2):** `en.html` + hreflang çifti; topbar'daki EN linki o zamana

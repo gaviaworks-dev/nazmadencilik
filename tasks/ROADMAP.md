@@ -6,9 +6,11 @@ Sıra kullanıcı onayıyla ilerler. Her adım bitince işaretlenir.
       crossfade. (Bitti, 2026-07-28. Ekleri de bitti: 6 sütun + tek-sütun adım,
       düşük çözünürlük işlemesi (blur+grain+overlay), hücrelerde kendi net
       fotoğrafları + durum merdiveni.)
-- [ ] **1b. Header/topbar yeniden düzenleme** — Teklif Alın topbar'a metin-link,
-      dil seçici header'a; tema-duyarlı şeffaf cam header (data-theme + IO).
-      (Bağlantı kesintisiyle uygulanamadı — SIRADA, onayla başlanacak.)
+- [x] **1b. Header/topbar yeniden düzenleme (R9)** — Teklif Alın topbar'a
+      metin-link, dil seçici header'a; tamamen saydam tema-duyarlı header
+      (data-theme + IO); TÜM ana bölümler tam 100svh, arka plan viewport
+      tepesinden. (Bitti, 2026-07-28 — 4. adımın "eşit yükseklik" yarısı da
+      bununla geldi; sıkıştırma/snap ölçüm turu 4. adımda.)
 - [ ] **2. Ürün Portföyü** — Gavia "04 / Vaka çalışmaları" kart yapısına dönüşüm
 - [ ] **3. Kurumsal** — Gavia bölüm ritmine oturtma
 - [ ] **4. Eşit yükseklik + snap turu** — tanımı aşağıda; TÜM bölümler son halini
