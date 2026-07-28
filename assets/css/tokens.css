@@ -69,7 +69,7 @@
   --white:     #FFFFFF;
   --ink:       var(--graphite);  /* birincil metin                             */
   --ink-soft:  #4C5058;          /* ikincil metin                              */
-  --ink-muted: #747982;          /* etiket / yardımcı metin                    */
+  --ink-muted: #70757E;          /* etiket / yardımcı metin — beyaz üstü 4.63:1 (AA, Faz 3 K2) */
   --line:      #E4E1DB;          /* hairline / kenarlık                        */
   --line-strong: #CDC8BF;
 
