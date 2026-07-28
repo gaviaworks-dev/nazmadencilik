@@ -83,10 +83,10 @@ README.md             # (Faz 4)
 - Commit/push/repo oluşturma yalnızca kullanıcı onayıyla yapılır.
 
 ## Açık işler ([BLOKER] işaretliler çözülmeden canlıya çıkılmaz)
-- [ ] **[BLOKER] Form servisi:** `index.html` iletişim formunun `action`'ı boş; Formspree
-      vb. hesap açılıp endpoint bağlanmadan SİTE CANLIYA ÇIKMAZ (ALTIN KURAL). Servis
-      belirlenince `kvkk.html` §5 ve `gizlilik-politikasi.html` §3'teki
-      `[[FORM SERVİSİ SEÇİMİ BEKLİYOR]]` bölümleri de güncellenecek.
+- [ ] **Form servisi:** Form yayında DEĞİL — markup `index.html`'de HTML yorumunda
+      bekliyor, yerine "Bize Ulaşın" bloğu var (önizleme deploy'u noindex'li). Formspree
+      vb. bağlanınca yorum açılır, `action` girilir; `kvkk.html` §5 ve
+      `gizlilik-politikasi.html` §3'teki yorumlu bölümler de güncellenir.
 - [ ] **[BLOKER] Patron künye bilgileri:** `kvkk.html`'deki `[[PATRON ONAYI BEKLİYOR]]`
       alanları — Vergi Kimlik No, MERSİS No, KEP adresi. Sahte değer YAZILMAZ.
 - [ ] **[BLOKER] Hukukçu onayı:** `kvkk.html`, `gizlilik-politikasi.html`,
