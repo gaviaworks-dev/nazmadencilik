@@ -253,14 +253,19 @@
      Tercih localStorage'da (çerez değil). Tüm sayfalara buradan enjekte olur. */
   try {
     if (!localStorage.getItem("naz-consent")) {
+      /* Metinler sayfanın html[lang]'ine göre seçilir (EN sayfalar dahil tek dosya) */
+      var isEN = (document.documentElement.lang || "tr").toLowerCase().indexOf("en") === 0;
       var consent = document.createElement("div");
       consent.className = "consent-banner";
       consent.setAttribute("role", "region");
-      consent.setAttribute("aria-label", "Çerez bilgilendirmesi");
+      consent.setAttribute("aria-label", isEN ? "Cookie notice" : "Çerez bilgilendirmesi");
       consent.innerHTML =
         '<div class="container consent-inner">' +
-        '<p class="consent-text">Bu site kendi adına çerez kullanmaz; yalnızca İletişim bölümündeki harita görüntülendiğinde Google\'ın teknik çerezleri devreye girebilir. Ayrıntı için <a href="cerez-politikasi.html">Çerez Politikası</a>.</p>' +
-        '<button class="btn btn--primary btn--sm" type="button">Kabul ediyorum</button>' +
+        (isEN
+          ? '<p class="consent-text">This site does not set any cookies of its own; only when the map in the Contact section is displayed may Google\'s technical cookies come into play. See the <a href="cookie-policy.html">Cookie Policy</a> for details.</p>' +
+            '<button class="btn btn--primary btn--sm" type="button">I accept</button>'
+          : '<p class="consent-text">Bu site kendi adına çerez kullanmaz; yalnızca İletişim bölümündeki harita görüntülendiğinde Google\'ın teknik çerezleri devreye girebilir. Ayrıntı için <a href="cerez-politikasi.html">Çerez Politikası</a>.</p>' +
+            '<button class="btn btn--primary btn--sm" type="button">Kabul ediyorum</button>') +
         '</div>';
       document.body.appendChild(consent);
       consent.querySelector("button").addEventListener("click", function () {
