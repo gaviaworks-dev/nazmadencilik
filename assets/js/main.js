@@ -105,16 +105,33 @@
   /* --- Mobil menü -------------------------------------------------------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".nav");
+  /* M8: menü açıkken arka plan kaymasın. Kilit HTML'de (body'de DEĞİL —
+     handoff: body{overflow:hidden} sticky hero'yu ve kök snap'i kırar);
+     html.nav-locked scroll konumunu koruduğu için sıçrama olmaz. Klasik
+     kaydırma çubuğu varsa genişliği --sbw ile telafi edilir (dokunmatik
+     cihazlarda overlay çubuk → 0 → kural etkisiz). */
+  function setNavLock(on) {
+    var de = document.documentElement;
+    if (on) {
+      de.style.setProperty("--sbw", (window.innerWidth - de.clientWidth) + "px");
+      de.classList.add("nav-locked");
+    } else {
+      de.classList.remove("nav-locked");
+      de.style.removeProperty("--sbw");
+    }
+  }
   function closeNav() {
     document.body.classList.remove("nav-open");
     if (nav) nav.classList.remove("is-open");
     if (toggle) toggle.setAttribute("aria-expanded", "false");
+    setNavLock(false);
   }
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
       document.body.classList.toggle("nav-open", open);
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setNavLock(open);
     });
     nav.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", closeNav);
@@ -125,6 +142,73 @@
     // Masaüstüne dönünce menüyü sıfırla
     window.matchMedia("(min-width: 901px)").addEventListener("change", closeNav);
   }
+
+  /* --- Yatay şerit yardımcıları (.hscroll deseni) -------------------------
+     syncTrack() eskiden Faaliyet şeridine gömülüydü; mobil turunda Ürün
+     Portföyü ve Kurumsal galerisi de aynı şeride dönüştüğü için ortak hale
+     getirildi. İlerleme çizgisi + (varsa) ok düğmelerinin pasifliği tek
+     yerden beslenir. Kaydırmanın kendisi native'dir — JS kaydırmaz. */
+  var mqMobile = window.matchMedia("(max-width: 900px)");
+  function bindHScroll(track, bar, prevBtn, nextBtn) {
+    if (!track) return null;
+    function sync() {
+      var max = track.scrollWidth - track.clientWidth;
+      if (bar) bar.style.width = max > 0 ? (track.scrollLeft / max) * 100 + "%" : "100%";
+      if (prevBtn) prevBtn.disabled = track.scrollLeft <= 2;
+      if (nextBtn) nextBtn.disabled = track.scrollLeft >= max - 2;
+    }
+    track.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    /* M9: mandatory snap'li yatay şeritte Tab, odaklanan öğeyi YARIM
+       bırakabiliyor. Tarayıcı "en az kaydırma" (nearest) uyguluyor, ardından
+       mandatory snap en yakın durağa geri çekiyor — ölçümde 2., 4., 6.
+       slaytlar hep görüş dışında kalıyordu (1.,3.,5. tesadüfen duraklara
+       denk geldiği için görünüyordu). Çözüm: odak gelen öğeyi açıkça
+       şeridin BAŞINA hizala (inline:"start" = snap durağının kendisi).
+       YALNIZ ≤900px: masaüstünde davranış aynen korunur. */
+    track.addEventListener("focusin", function (e) {
+      if (!mqMobile.matches) return;
+      /* Odaklanan öğenin kendisi hizalanır: üç şeritte de o öğe zaten
+         slaytın kendisidir (.axis · .gallery-thumb · .gallery-main img).
+         Şeridin kendisi odaklandığında (klavye durağı) kaydırma yapılmaz. */
+      if (e.target === track) return;
+      e.target.scrollIntoView({ inline: "start", block: "nearest", behavior: prefersReduced ? "auto" : "smooth" });
+    });
+    sync();
+    return sync;
+  }
+
+  /* Ürün Portföyü + Kurumsal galerisi: ≤900px'te .hscroll davranışını CSS'ten
+     devralır. Şeridin KENDİSİ klavye durağı olur (kartlar odaklanamaz;
+     odaklı bir scroller'da ←/→ tarayıcının native desteğiyle kaydırır).
+     tabindex/role masaüstünde EKLENMEZ — orada grid'dir, fazladan sekme
+     durağı ve odak halkası oluşmasın. */
+  var hscrollers = [];
+  [".case-grid", ".about-gallery"].forEach(function (sel) {
+    var el = document.querySelector(sel);
+    if (!el) return;
+    var next = el.nextElementSibling;
+    var bar = next && next.classList.contains("hscroll-progress")
+      ? next.querySelector(".hscroll-progress-bar") : null;
+    hscrollers.push({ el: el, sync: bindHScroll(el, bar), keyboard: sel === ".case-grid" });
+  });
+  function syncHScrollA11y() {
+    hscrollers.forEach(function (s) {
+      if (!s.keyboard) return;
+      if (mqMobile.matches) {
+        s.el.setAttribute("tabindex", "0");
+        s.el.setAttribute("role", "group");
+        s.el.setAttribute("aria-label", s.el.getAttribute("data-hscroll-label") || "");
+      } else {
+        s.el.removeAttribute("tabindex");
+        s.el.removeAttribute("role");
+        s.el.removeAttribute("aria-label");
+      }
+      if (s.sync) s.sync();
+    });
+  }
+  syncHScrollA11y();
+  mqMobile.addEventListener("change", syncHScrollA11y);
 
   /* --- Faaliyet eksen sahnesi (R7) ---------------------------------------
      Tıklamayla aktif sektör + full-bleed arka planda iki katmanlı crossfade.
@@ -220,17 +304,10 @@
     window.addEventListener("scroll", preloadIfNear, { passive: true });
     preloadIfNear();
 
-    /* Oklar + ilerleme çizgisi (desil carousel deseni: scrollBy + snap) */
+    /* Oklar + ilerleme çizgisi (desil carousel deseni: scrollBy + snap).
+       M-slider: ölçüm/pasiflik mantığı ortak bindHScroll'a taşındı. */
     if (track) {
-      function syncTrack() {
-        var max = track.scrollWidth - track.clientWidth;
-        if (progressBar) progressBar.style.width = max > 0 ? (track.scrollLeft / max) * 100 + "%" : "100%";
-        if (prevBtn) prevBtn.disabled = track.scrollLeft <= 2;
-        if (nextBtn) nextBtn.disabled = track.scrollLeft >= max - 2;
-      }
-      track.addEventListener("scroll", syncTrack, { passive: true });
-      window.addEventListener("resize", syncTrack);
-      syncTrack();
+      bindHScroll(track, progressBar, prevBtn, nextBtn);
       function nudge(dir) {
         /* R8: sayfa atlamak yerine TEK sütun ilerler; uçta ok pasifleşir
            (döngü yerine pasif: mevcut disabled deseniyle tutarlı, uç hissi net) */
@@ -263,14 +340,42 @@
     }
     galleryThumbs.forEach(function (thumb, i) {
       thumb.addEventListener("click", function () {
-        galleryThumbs.forEach(function (o) { o.classList.toggle("is-active", o === thumb); });
-        galleryMain.src = thumb.getAttribute("data-full");
+        /* M1b: ≤900px'te "büyük görsel + seçici" ikilisi düşer — galeri tek
+           yatay şerittir, her küçük görsel kendi başına bir slayttır. Büyük
+           görselin src'sini değiştirmek 1. slaytı 3. slaytın kopyası yapardı. */
+        if (!mqMobile.matches) {
+          galleryThumbs.forEach(function (o) { o.classList.toggle("is-active", o === thumb); });
+          galleryMain.src = thumb.getAttribute("data-full");
+        }
         lbOpen(i); /* R14: tıklanınca galeri tam ekran açılır */
       });
     });
-    galleryMain.addEventListener("click", function () {
+    function openMainInLightbox() {
       lbOpen(Math.max(0, galleryUrls.indexOf(galleryMain.getAttribute("src"))));
+    }
+    galleryMain.addEventListener("click", openMainInLightbox);
+    /* M1b: mobil şeritte 1. slayt büyük görselin kendisidir (rozet onun
+       üstünde) ve 1. küçük görsel gizlenir — o slaytın klavye yolu burada
+       açılır. Masaüstünde öznitelikler EKLENMEZ: orada lightbox'a klavye
+       erişimi zaten küçük görsel düğmeleriyle vardır. */
+    galleryMain.addEventListener("keydown", function (e) {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      e.preventDefault();
+      openMainInLightbox();
     });
+    function syncGalleryMainA11y() {
+      if (mqMobile.matches) {
+        galleryMain.setAttribute("tabindex", "0");
+        galleryMain.setAttribute("role", "button");
+        galleryMain.setAttribute("aria-label", galleryMain.getAttribute("data-zoom-label") || "");
+      } else {
+        galleryMain.removeAttribute("tabindex");
+        galleryMain.removeAttribute("role");
+        galleryMain.removeAttribute("aria-label");
+      }
+    }
+    syncGalleryMainA11y();
+    mqMobile.addEventListener("change", syncGalleryMainA11y);
     if (lightbox) {
       lightbox.querySelector(".lightbox-close").addEventListener("click", function () { lightbox.close(); });
       lightbox.querySelector(".lightbox-prev").addEventListener("click", function () { lbShow(lbIndex - 1); });
@@ -294,12 +399,25 @@
       consent.className = "consent-banner";
       consent.setAttribute("role", "region");
       consent.setAttribute("aria-label", isEN ? "Cookie notice" : "Çerez bilgilendirmesi");
+      /* M2: bandın mobilde ölçülen yüksekliği 180px'ti (viewport'un %20–22'si)
+         ve Faaliyet şeridinin üstüne oturuyordu. Dar ekranda metnin KISA
+         varyantı verilir: aynı üç bilgi (kendi çerezi yok · harita istisnası ·
+         ayrıntı bağlantısı) korunur, cümle sıkıştırılır. Masaüstü metni
+         AYNEN kalır — "masaüstü sıfır fark" kuralı. */
+      var short = mqMobile.matches;
       consent.innerHTML =
         '<div class="container consent-inner">' +
         (isEN
-          ? '<p class="consent-text">This site does not set any cookies of its own; only when the map in the Contact section is displayed may Google\'s technical cookies come into play. See the <a href="cookie-policy.html">Cookie Policy</a> for details.</p>' +
+          ? '<p class="consent-text">' + (short
+              ? 'This site sets no cookies of its own; only the map may bring in Google\'s technical cookies. Details: <a href="cookie-policy.html">Cookie Policy</a>.'
+              : 'This site does not set any cookies of its own; only when the map in the Contact section is displayed may Google\'s technical cookies come into play. See the <a href="cookie-policy.html">Cookie Policy</a> for details.') + '</p>' +
             '<button class="btn btn--primary btn--sm" type="button">I accept</button>'
-          : '<p class="consent-text">Bu site kendi adına çerez kullanmaz; yalnızca İletişim bölümündeki harita görüntülendiğinde Google\'ın teknik çerezleri devreye girebilir. Ayrıntı için <a href="cerez-politikasi.html">Çerez Politikası</a>.</p>' +
+          : '<p class="consent-text">' + (short
+              /* "yalnızca" mobil varyantta düşer: noktalı virgüllü karşıtlık
+                 istisnayı zaten kuruyor ve 360px'te tam bir satır kazandırıyor
+                 (119px → hedefin altı). Masaüstü cümlesi tam haliyle durur. */
+              ? 'Bu site kendi adına çerez kullanmaz; haritada Google\'ın teknik çerezleri devreye girebilir. Ayrıntı: <a href="cerez-politikasi.html">Çerez Politikası</a>.'
+              : 'Bu site kendi adına çerez kullanmaz; yalnızca İletişim bölümündeki harita görüntülendiğinde Google\'ın teknik çerezleri devreye girebilir. Ayrıntı için <a href="cerez-politikasi.html">Çerez Politikası</a>.') + '</p>' +
             '<button class="btn btn--primary btn--sm" type="button">Kabul ediyorum</button>') +
         '</div>';
       document.body.appendChild(consent);
