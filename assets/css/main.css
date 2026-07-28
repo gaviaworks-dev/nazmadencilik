@@ -1020,14 +1020,16 @@ textarea.input { min-height: 88px; resize: vertical; }
 }
 .legal-body strong { color: var(--ink); }
 .legal-body a { color: var(--brand); font-weight: var(--fw-semi); text-decoration: underline; text-underline-offset: 2px; }
-/* Patron onayı bekleyen künye alanları — bilinçli görünür işaret (yayın blokeri) */
-.todo-mark {
+/* R19: taslak uyarı bloğu — yasal sayfaların başında görünür bilgilendirme */
+.legal-warn {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4) var(--space-5);
   background: var(--danger-soft);
   border: 1px dashed var(--danger);
-  border-radius: var(--radius-xs);
+  border-radius: var(--radius-sm);
   color: var(--danger-deep);
+  font-size: var(--fs-sm);
   font-weight: var(--fw-semi);
-  padding: 0 0.3em;
 }
 
 /* ==========================================================================
