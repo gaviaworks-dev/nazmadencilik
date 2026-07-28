@@ -9,8 +9,14 @@ TR + EN, tek sayfa (anchor nav), GitHub Pages'te yayınlanır.
   varyantları, kart hover deseni, sticky/transparan header + logo swap, eyebrow deseni,
   IntersectionObserver scroll-reveal ve a11y tabanı desil'den **birebir** taşınır.
 - Değişen sadece token DEĞERLERİDİR: **"Antrasit & Bakır"** — antrasit koyu zemin
-  (`#17191D` ailesi), bakır/amber vurgu (`#A85A28` / `#E8A455`), sıcak nötr açık zeminler,
-  Archivo (self-host, değişken font). Logodaki turuncu çizgi paletin dayanağıdır.
+  (`#17191D` ailesi), bakır/amber vurgu (`#A85A28` / `#E8A455`), sıcak nötr açık zeminler.
+  Logodaki turuncu çizgi paletin dayanağıdır.
+- **Font kararı (2026-07-28, kullanıcı onaylı):** Manrope (Gavia gövde fontu, SIL OFL)
+  benimsendi ve tipografik ölçek Gavia'nın gerçek sistemine uyarlandı (H1 2.7→5rem /
+  lh 1.02 / -0.025em; H2 1.875→3rem / 700 / lh 1.25). Queulat ("Quelab") ticari
+  lisanslı olduğu için alınamadı; başlık karakteri Manrope 800 ağırlıkla kuruluyor.
+  Lisans alınırsa display fontu tek token değişimiyle (`--font-display`) takılabilir.
+  Manrope'ta italik yok — vurgu ağırlık kontrastıyla, sentetik eğik YASAK.
 - desil'in yapısından sapan yeni düzen/komponent icat edilmez. Yeni bir ihtiyaç çıkarsa
   önce desil'de karşılığı aranır; yoksa kullanıcıya sorulur.
 

@@ -38,17 +38,16 @@ Statik one-page kurumsal site **canlıda (önizleme)**. Build step yok; saf HTML
 9. (Opsiyonel) Patrondan gerçek saha fotoğrafları gelirse `assets/img/sectors/`
    aynı adlarla değiştirilebilir; display fontu kararı (aşağıda)
 
-## Font kararı ve gerekçesi
+## Font kararı ve gerekçesi (NİHAİ — kullanıcı onaylı)
 
-Gavia'nın gerçek stylesheet'i (`gavia/assets/css/brand.css`) incelendi:
-- **Gövde: Manrope** — Google Fonts, **SIL OFL** → self-host edildi ve UYGULANDI
-  (`assets/fonts/manrope-var-*.woff2`, değişken wght 200–800, latin+latin-ext).
-- **Display: Queulat** (Latinotype) — **TİCARİ**. Lisanssız self-host = ihlal →
-  UYGULANMADI. En yakın açık alternatif önerisi: **Zilla Slab** (OFL, TR glifleri tam);
-  ikinci aday: Bitter. Kullanıcı onaylarsa display token'ı tek yerden değişir.
-- Yeniden dengeleme: başlık vurgusu italikten `--fw-light` (300) kontrastına döndü
-  (Manrope'un italik kesimi yok); `--lh-body` 1.65→1.6 (büyük x-yüksekliği).
-- Bu, desil tasarım-otoritesi kararından KULLANICI ONAYLI bilinçli sapmadır.
+Manrope (Gavia gövde fontu, SIL OFL) benimsendi; Archivo'ya dönüş YOK. Tipografik
+SİSTEM de Gavia'nın gerçeğinden uyarlandı (brand.css + utility sınıfları):
+H1 `clamp(2.7rem→5rem)` / lh 1.02 / tracking -0.025em; H2 `clamp(1.875→3rem)` /
+700 / lh 1.25; H3 1.25rem; eyebrow 11px/600/0.14em; başlık:gövde ≈3×.
+Queulat ("Quelab", Latinotype) ticari lisanslı olduğu için alınamadı; başlık
+karakteri Manrope 800 ağırlıkla kuruluyor. Lisans alınırsa display fontu tek token
+değişimiyle (`--font-display`) takılabilir. Manrope'ta italik kesim yok — başlık
+vurgusu ağırlık kontrastı (`--fw-light`), sentetik eğik kullanılmaz.
 
 ## Mimari kararlar (bunları bilmeden dokunma)
 

@@ -111,7 +111,7 @@ button { font-family: inherit; cursor: pointer; }
   min-height: var(--screen-h);
   display: flex; flex-direction: column; justify-content: center;
   padding-top: calc(var(--topbar-h) + var(--header-h) + var(--space-6));
-  padding-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
 }
 .section--screen .section-head { margin-bottom: var(--space-4); }
 /* Bölüm geçişleri KESKİN: beyaz/taş alternansı düz zeminlerle, yumuşatma yok */
